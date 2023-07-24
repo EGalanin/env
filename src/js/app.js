@@ -1,11 +1,9 @@
-// TODO: write code here
+import Board from './board';
+import Goblin from './Goblin';
+import GamePlay from './gameplay';
 
-// comment this to pass build
-const unusedVariable = "variable";
+const board = new Board();
+const char = new Goblin();
+const gameplay = new GamePlay(board, char);
 
-// for demonstration purpose only
-export default function demo(value) {
-  return `Demo: ${value}`;
-}
-
-console.log("app.js included");
+gameplay.init();
