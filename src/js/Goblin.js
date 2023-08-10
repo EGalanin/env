@@ -4,8 +4,9 @@ export default class Goblin {
   }
 
   creatChar() {
-    const char = document.createElement('div');
+    const char = document.createElement('img');
     char.classList.add('goblin');
+    char.src = 'img/goblin.png';
     this.char = char;
   }
 

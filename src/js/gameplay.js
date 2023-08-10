@@ -17,7 +17,7 @@ export default class GamePlay {
     const body = document.querySelector('body');
     const container = document.createElement('div');
     container.classList.add('container');
-    container.innerHTML = '<n1 class=\'title\'>Coblin Battle</n1>';
+    container.innerHTML = '<h1 class=\'title\'>Coblin Battle</h1>';
     container.appendChild(board);
     body.insertBefore(container, body.firstChild);
     this.cells = [...board.children];
