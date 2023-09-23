@@ -1,3 +1,5 @@
+import goblinImg from "../img/goblin.png";
+
 export default class Goblin {
   constructor() {
     this.char = undefined;
@@ -6,7 +8,7 @@ export default class Goblin {
   creatChar() {
     const char = document.createElement('img');
     char.classList.add('goblin');
-    char.src = 'img/goblin.png';
+    char.src = goblinImg;
     this.char = char;
   }
 
