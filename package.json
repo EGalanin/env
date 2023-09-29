@@ -14,6 +14,10 @@
     "preshow:dist": "npm run build",
     "show:dist": "live-server dist"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": "16.20.02"
+  },
   "author": "coursar",
   "license": "MIT",
   "devDependencies": {
