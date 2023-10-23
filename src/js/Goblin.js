@@ -16,4 +16,5 @@ export default class Goblin {
     this.creatChar();
     return this.char;
   }
+
 }

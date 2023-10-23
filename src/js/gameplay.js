@@ -1,9 +1,13 @@
-export default class GamePlay {
+  export default class GamePlay {
   constructor(board, char) {
     this.board = board;
     this.boardSize = 4;
     this.char = char;
     this.activeChar = null;
+    this.timerId = null;
+    this.hit_count = 0;
+    this.miss_count = 0;
+    this.hit = this.hit.bind(this)
   }
 
   init() {
@@ -35,19 +39,45 @@ export default class GamePlay {
   }
 
   deletedChar() {
+
     if (this.activeChar === null) {
       return;
     }
     this.cells[this.position].firstChild.remove();
+    this.miss_count++; 
+    document.querySelector(".miss").textContent = "Промахов " + this.miss_count;
+    if (this.miss_count >= 5) {
+
+      this.activeChar = null;
+      this.hit_count = 0;
+      this.miss_count = 0;
+      document.querySelector(".miss").textContent = "Промахов " + this.miss_count;
+      this.position = null;
+      clearInterval(this.timerId)
+      alert("Вы проиграли!");
+      this.start(); 
+    }
+
+   }
+
+  hit() {
+    this.hit_count = this.hit_count + 1;
+    document.querySelector(".hit").textContent = "Попадания " + this.hit_count;
+    if (this.activeChar === null) {
+      return;
+    }
+    this.cells[this.position].firstChild.remove();
+    this.activeChar = null;
   }
 
   adventChar() {
     this.activeChar = this.char.getChar();
+    this.activeChar.onclick =  this.hit
     this.cells[this.position].appendChild(this.activeChar);
   }
 
   start() {
-    setInterval(() => {
+    this.timerId = setInterval(() => {
       this.generateposition();
     }, 1000);
   }
